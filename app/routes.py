@@ -1,4 +1,6 @@
+""" Definição de rotas"""
 from flask import render_template, request, redirect, url_for, flash
+from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, get_db_connection
 
 @app.route('/')
@@ -10,6 +12,7 @@ def register():
     if request.method == 'POST':
         cpf = request.form['cpf']
         senha = request.form['senha']
+        senha_hash = generate_password_hash(senha) # Implementação de Hashing de senhas
         nome = request.form['nome']
         telefone = request.form['telefone']
         email = request.form['email']
@@ -21,7 +24,7 @@ def register():
 
         conn = get_db_connection()
         conn.execute('INSERT INTO usuarios (cpf, senha, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                     (cpf, senha, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
+                    (cpf, senha_hash, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
         conn.commit()
         conn.close()
         flash('Usuário registrado com sucesso!')
@@ -36,10 +39,11 @@ def login():
         senha = request.form['senha']
 
         conn = get_db_connection()
-        user = conn.execute('SELECT * FROM usuarios WHERE cpf = ? AND senha = ?', (cpf, senha)).fetchone()
+        user = conn.execute('SELECT * FROM usuarios WHERE cpf = ?', (cpf,)).fetchone()
         conn.close()
 
-        if user:
+        if user and check_password_hash(user['senha'], senha): # Decripta o rash da senha e verifica se está correta
+            print('login realizado')
             flash('Login realizado com sucesso!')
             return redirect(url_for('index'))
         else:
