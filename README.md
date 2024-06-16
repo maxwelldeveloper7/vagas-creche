@@ -1,7 +1,3 @@
-Aqui está o conteúdo atualizado para o seu `README.md`:
-
----
-
 # Cadastro de Creches
 
 ![Python](https://img.shields.io/badge/Python-3.10.12-blue.svg)
@@ -101,7 +97,3 @@ Sinta-se à vontade para contribuir com este projeto. Faça um fork do repositó
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Sinta-se à vontade para ajustar qualquer parte do texto conforme necessário!
