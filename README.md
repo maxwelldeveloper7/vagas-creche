@@ -4,8 +4,8 @@ Aqui está o conteúdo atualizado para o seu `README.md`:
 
 # Cadastro de Creches
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-2.0.1-green.svg)
+![Python](https://img.shields.io/badge/Python-3.10.12-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)
 ![SQLite](https://img.shields.io/badge/SQLite-3.35.5-orange.svg)
 ![HTML](https://img.shields.io/badge/HTML-5-red.svg)
 ![CSS](https://img.shields.io/badge/CSS-3-blue.svg)
