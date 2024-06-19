@@ -1,11 +1,11 @@
 # Cadastro de Creches
 
-![Python](https://img.shields.io/badge/Python-3.10.12-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-3.0.3-green.svg)
-![SQLite](https://img.shields.io/badge/SQLite-3.35.5-orange.svg)
-![HTML](https://img.shields.io/badge/HTML-5-red.svg)
-![CSS](https://img.shields.io/badge/CSS-3-blue.svg)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow.svg)
+![Python](https://img.shields.io/badge/Python-3.0-blue)
+![Flask](https://img.shields.io/badge/Flask-3.0.3-blue)
+![SQLite](https://img.shields.io/badge/SQLite-3.0-blue)
+![HTML](https://img.shields.io/badge/HTML-5-blue)
+![CSS](https://img.shields.io/badge/CSS-3-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-blue)
 
 ## Descrição
 
@@ -13,16 +13,16 @@ O sistema de Cadastro de Creches é uma aplicação web desenvolvida para a Secr
 
 ## Funcionalidades
 
-- **Cadastro de Usuários:** Permite o registro de usuários com CPF e senha segura (hashing).
-- **Login de Usuários:** Autenticação de usuários utilizando CPF e senha.
-- **Cadastro de Crianças:** Formulário para cadastro de crianças para vagas em creches.
+- Cadastro de Usuários: Permite o registro de usuários com CPF e senha segura (hashing).
+- Login de Usuários: Autenticação de usuários utilizando CPF e senha.
+- Cadastro de Crianças: Formulário para cadastro de crianças para vagas em creches.
 
 ## Tecnologias Utilizadas
 
-- **Python:** Linguagem de programação utilizada para o desenvolvimento do backend.
-- **Flask:** Micro framework web utilizado para criar a aplicação web.
-- **SQLite:** Banco de dados utilizado para armazenar informações de usuários e inscrições.
-- **HTML/CSS/JavaScript:** Tecnologias utilizadas para construir o frontend da aplicação.
+- **Python**: Linguagem de programação utilizada para o desenvolvimento do backend.
+- **Flask**: Micro framework web utilizado para criar a aplicação web.
+- **SQLite**: Banco de dados utilizado para armazenar informações de usuários e inscrições.
+- **HTML/CSS/JavaScript**: Tecnologias utilizadas para construir o frontend da aplicação.
 
 ## Estrutura do Projeto
 
@@ -38,13 +38,18 @@ cadastro-creches/
 │       ├── register.html
 │       └── login.html
 │
+├── static/
+│   ├── css/
+│   │   └── styles.css
+│   └── js/
+│       └── script.js
+│
 ├── venv/
 │   └── ... (arquivos do ambiente virtual)
 │
 ├── run.py
 ├── init_db.py
-└── schema.sql
-```
+└── schema.sql```
 
 ## Configuração e Execução
 
