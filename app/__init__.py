@@ -1,7 +1,7 @@
 from flask import Flask
 import sqlite3
 
-app = Flask(__name__, static_folder='../static')
+app = Flask(__name__, static_folder='../static', static_url_path='/static')
 
 app.config['SECRET_KEY'] = 'supersecretkey'
 
