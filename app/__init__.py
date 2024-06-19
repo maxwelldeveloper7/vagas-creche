@@ -1,7 +1,8 @@
 from flask import Flask
 import sqlite3
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static')
+
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 def get_db_connection():
