@@ -48,15 +48,34 @@ h2{
 }
 
 h3{
-    color: var(--roxo);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: .5rem .5rem 1rem .5rem;
 }
 
-section p{
+section{
+    text-wrap: wrap;
+    margin: .5rem .75rem 1rem .75rem;
+}
+
+section p, ul{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+}
+
+section ul{
+    list-style: disc;
+}
+
+section li{
+    margin: 0 .5rem .5rem .9rem;
+}
+
+section .aviso{
+    font-weight: bold;
+    margin: 0 0 .5rem 0;
 }
 
 nav ul{
@@ -72,11 +91,19 @@ li a{
 }
 
 .button {
-    border: solid var(--roxo) 1px;
+    border: solid black 1px;
     border-radius: 4px;
     padding: 0.25rem;
-    background-color: azure;
-    margin: 10px 10px;
+    background-color: var(--roxo);
+    margin: 0.25rem;
+    color: #FFFFFF;
+    width: 30%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .9rem;
+}
+
+.button:hover{
+    background-color: var(--laranja);
 }
 
 .form-container {
@@ -90,7 +117,8 @@ li a{
 }    
 
 .form-group label {
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
 }
 
 .form-group input, .form-group select {
@@ -103,10 +131,12 @@ button {
     padding: 0.25rem;
     background-color: var(--roxo);
     margin: 0.25rem;
+    color: #FFFFFF;
+    width: 30%;
 }
 
 button:hover {
-    
+    background-color: var(--laranja);
 }
 
 footer{
@@ -120,7 +150,7 @@ footer{
     text-align: center;
     justify-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 footer p a{
@@ -128,14 +158,20 @@ footer p a{
     color: inherit;
 }
 
-footer p a:hover{
-    text-decoration: underline;
-    color: var(--laranja);
-}
+
 
 /* Larger screens */
 @media (min-width: 600px) {
     .container {
         max-width: 600px;
+    }
+
+    img {
+        width: 40%;
+    }
+
+    footer p a:hover{
+        text-decoration: underline;
+        color: var(--laranja);
     }
 }
