@@ -1,17 +1,31 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Cadastro de Creches</title>
-  </head>
-  <body>
-    <div class="container">
-    <h1>Bem-vindo ao Sistema de Cadastro de Creches</h1>
-    <a href="{{ url_for('register') }}">Registrar</a>
-    <a href="{{ url_for('login') }}">Login</a>
-    </div>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Cadastro de Creches</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Cadastro de Creches</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('register') }}">Registrar</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+      </nav>
+    </header>  
+    
+    <footer class="footer">
+      <p>Secretaria Municipal de Educação de Nanuque</p>
+    </footer>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
 </html>
