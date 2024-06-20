@@ -11,11 +11,13 @@
     <div class="container">
     <h1>Login</h1>
     <form method="post" class="form-container">
+      <div class="form-group">
       <label for="cpf">CPF:</label>
       <input type="text" id="cpf" name="cpf" required><br>
       <label for="senha">Senha:</label>
       <input type="password" id="senha" name="senha" required><br>
       <button type="submit">Login</button>
+      </div>
     </form>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

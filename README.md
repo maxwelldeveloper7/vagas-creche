@@ -1,11 +1,11 @@
 # Cadastro de Creches
 
-![Python](https://img.shields.io/badge/Python-3.0-blue)
-![Flask](https://img.shields.io/badge/Flask-3.0.3-blue)
-![SQLite](https://img.shields.io/badge/SQLite-3.0-blue)
-![HTML](https://img.shields.io/badge/HTML-5-blue)
+![Python](https://img.shields.io/badge/Python-3.10.12-green)
+![Flask](https://img.shields.io/badge/Flask-3.0.3-black)
+![SQLite](https://img.shields.io/badge/SQLite-3.0-grey)
+![HTML](https://img.shields.io/badge/HTML-5-orange)
 ![CSS](https://img.shields.io/badge/CSS-3-blue)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
 
 ## Descrição
 

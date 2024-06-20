@@ -6,23 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <title>Cadastro de Creches</title>
+  <title>Cadastro de Vagas para Creches</title>
 </head>
 
 <body>
   <div class="container">
     <header class="header">
-      <h1>Cadastro de Creches</h1>
+      <h1>Secretaria Municipal de Educação</h1>
+      <h2>Cadastro de Vagas para Creches</h2>    
       <nav>
         <ul>
-          <li><a href="{{ url_for('register') }}">Registrar</a></li>
-          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('register') }}" class="button">Registrar</a></li>
+          <li><a href="{{ url_for('login') }}" class="button">Login</a></li>
         </ul>
       </nav>
     </header>  
     
     <footer class="footer">
-      <p>Secretaria Municipal de Educação de Nanuque</p>
+      <p>Prefeitura Municipal de Nanuque</p>
     </footer>
   </div>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
