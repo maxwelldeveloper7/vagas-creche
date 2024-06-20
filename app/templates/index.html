@@ -6,26 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <title>Cadastro de Vagas para Creches</title>
+  <title>Matrículas para Educação Infantil</title>
 </head>
 
 <body>
   <div class="container">
     <header class="header">
-      <h1>Secretaria Municipal de Educação</h1>
-      <h2>Cadastro de Vagas para Creches</h2>    
+      <img src="{{ url_for('static', filename='images/logo_mobile.svg')}}" alt="">
+      <h2>Secretaria Municipal de Educação</h2>
+      <h3>Matriculas para Educação Infantil</h3>
       <nav>
         <ul>
           <li><a href="{{ url_for('register') }}" class="button">Registrar</a></li>
           <li><a href="{{ url_for('login') }}" class="button">Login</a></li>
         </ul>
       </nav>
-    </header>  
-    
-    <footer class="footer">
-      <p>Prefeitura Municipal de Nanuque</p>
-    </footer>
+    </header>
   </div>
+  <footer class="footer">
+    <p>&copy; 2024 Todos os diretos são reservados</p>
+    <p>Este projeto está licenciado sob a <a href="https://github.com/maxwelldeveloper7/cadastro-creches/blob/main/LICENSE">licença MIT</a>.</p>
+  </footer>
+
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
