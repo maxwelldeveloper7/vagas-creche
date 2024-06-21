@@ -49,8 +49,8 @@ cadastro-creches/
 │
 ├── run.py
 ├── init_db.py
-└── schema.sql```
-
+└── schema.sql
+```
 ## Configuração e Execução
 
 ### Pré-requisitos
