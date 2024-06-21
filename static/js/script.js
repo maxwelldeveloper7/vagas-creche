@@ -1,8 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     function applyMask(input, maskFunction) {
-        input.addEventListener('input', function() {
-            input.value = maskFunction(input.value);
-        });
+        if (input) {
+            input.addEventListener('input', function () {
+                input.value = maskFunction(input.value);
+            });
+        }
     }
 
     function cpfMask(value) {
