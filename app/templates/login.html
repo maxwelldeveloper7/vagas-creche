@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Adicionando a biblioteca Inputmask via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.19/inputmask.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Login</title>
@@ -23,6 +20,11 @@
       </div>
     </form>
     </div>
+    <footer class="footer">
+      <p>&copy; 2024 Todos os diretos são reservados</p>
+      <p>Este projeto está licenciado sob a <a
+          href="https://github.com/maxwelldeveloper7/cadastro-creches/blob/main/LICENSE">licença MIT</a>.</p>
+    </footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
