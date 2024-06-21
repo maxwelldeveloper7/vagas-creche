@@ -11,10 +11,13 @@ def index():
 def register():
     if request.method == 'POST':
         cpf = request.form['cpf']
-        senha = request.form['senha']
-        senha_hash = generate_password_hash(senha) # Implementação de Hashing de senhas
+        # filtra e remove os caracteres da máscara
+        senha = ''.join(filter(str.isdigit, request.form['cpf']))
+        # Implementação de Hashing de senhas
+        senha_hash = generate_password_hash(senha)
         nome = request.form['nome']
-        telefone = request.form['telefone']
+        # filtra e remove os caracteres da máscara
+        telefone = ''.join(filter(str.isdigit, request.form['telefone']))
         email = request.form['email']
         endereco = request.form['endereco']
         bairro = request.form['bairro']
@@ -35,7 +38,7 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        cpf = request.form['cpf']
+        cpf = ''.join(filter(str.isdigit, request.form['cpf'])) # filtra e remove os pontos e traço da máscara
         senha = request.form['senha']
 
         conn = get_db_connection()

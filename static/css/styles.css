@@ -34,7 +34,7 @@ h1{
 }
 
 img{
-    width: 55%;
+    width: 40%;
     margin: 0.75rem;
 }
 
@@ -124,6 +124,8 @@ li a{
 
 .form-group input, .form-group select {
     margin-bottom: .5rem;
+    padding: 0.25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 button {
@@ -162,12 +164,21 @@ footer p a{
 
 /* Larger screens */
 @media (min-width: 599px) {
+    body{
+        background-color: #f3f3f3;
+    }
+    
     .container {
+        max-width: 600px;
+        background-color: #ffffff;
+    }
+
+    .form-container{
         max-width: 600px;
     }
 
     img {
-        width: 40%;
+        width: 30%;
     }
 
     footer p a:hover{
