@@ -5,18 +5,19 @@
 }
 
 /* Mobile First Styling (375px width) */
-body {
+body, html{
+    height: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
 }
 
 .container {
-    position: relative;;
-    min-height: 100vh;
     max-width: 100vw;
     margin: 0;
+    flex: 1;
+    padding: .75rem;
 }
 
 header{
@@ -169,6 +170,8 @@ footer{
     justify-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.8rem;
+    flex-shrink: 0;
+    z-index: 1;
 }
 
 footer p a{
