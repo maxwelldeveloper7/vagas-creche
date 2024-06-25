@@ -8,6 +8,7 @@
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     align-items: center;
 }
 
@@ -81,6 +82,7 @@ section .aviso{
 nav ul{
     display: flex;
     align-items: center;
+    justify-content: center;
     align-content: space-around;
 }
 
@@ -91,13 +93,12 @@ li a{
 }
 
 .button {
-    border: solid black 1px;
     border-radius: 4px;
-    padding: 0.25rem;
     background-color: var(--roxo);
+    padding: 0.6rem;
     margin: 0.25rem;
     color: #FFFFFF;
-    width: 30%;
+    text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: .9rem;
 }
@@ -125,17 +126,32 @@ li a{
 .form-group input, .form-group select {
     margin-bottom: .5rem;
     padding: 0.25rem;
+    border: 2px solid #ccc; /* Cor padrão da borda */
+    padding: .5rem;
+    border-radius: .25rem;
+    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.form-group input:focus{
+    border-color: #F77006; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão do navegador */
+    box-shadow: 0 0 5px rgba(247, 112, 6, 0.5); /* Sombra leve ao focar */
+}
+
+.button-group{
+    display: inline;
+}
+
 button {
-    border: solid black 1px;
     border-radius: 4px;
-    padding: 0.25rem;
     background-color: var(--roxo);
+    padding: 0.5rem;
     margin: 0.25rem;
     color: #FFFFFF;
-    width: 30%;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .9rem;
 }
 
 button:hover {
@@ -143,7 +159,7 @@ button:hover {
 }
 
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     padding: 0.5rem 0;
