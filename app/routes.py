@@ -1,9 +1,10 @@
 """ Definição de rotas"""
-from flask import render_template, request, redirect, url_for, flash
+import logging
+import time
 import sqlite3
+from flask import render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, get_db_connection
-import logging
 
 @app.route('/')
 def index():
@@ -33,9 +34,10 @@ def register():
                         (cpf, senha_hash, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
             conn.commit()
             flash('Usuário registrado com sucesso!')
+            time.sleep(2)
             return redirect(url_for('index'))
         except sqlite3.IntegrityError:
-            flash('CPF já cadastrado. Por favor, use um CPF diferente.')
+            flash('CPF já cadastrado. Tente novamente.')
         except Exception as e:
             logging.error(f'Error occurred: {e}')
             flash('Ocorreu um erro no servidor. Tente novamente mais tarde.')

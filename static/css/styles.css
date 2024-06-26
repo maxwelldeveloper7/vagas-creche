@@ -20,6 +20,16 @@ body, html{
     padding: .75rem;
 }
 
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    color: red;
+    text-align: center;
+}
+
 header{
     display: flex;
     flex-direction: column;
@@ -94,12 +104,15 @@ li a{
 }
 
 .button {
+    display: inline-block;
     border-radius: 4px;
     background-color: var(--roxo);
     padding: 0.6rem;
     margin: 0.25rem;
+    width: 5rem;
     color: #FFFFFF;
     text-align: center;
+    text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: .9rem;
 }
