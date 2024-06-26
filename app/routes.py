@@ -1,7 +1,9 @@
 """ Definição de rotas"""
 from flask import render_template, request, redirect, url_for, flash
+import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app, get_db_connection
+import logging
 
 @app.route('/')
 def index():
@@ -26,12 +28,20 @@ def register():
         bairro_trabalho = request.form['bairro_trabalho']
 
         conn = get_db_connection()
-        conn.execute('INSERT INTO usuarios (cpf, senha, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    (cpf, senha_hash, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
-        conn.commit()
-        conn.close()
-        flash('Usuário registrado com sucesso!')
-        return redirect(url_for('index'))
+        try:
+            conn.execute('INSERT INTO usuarios (cpf, senha, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        (cpf, senha_hash, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
+            conn.commit()
+            flash('Usuário registrado com sucesso!')
+            return redirect(url_for('index'))
+        except sqlite3.IntegrityError:
+            flash('CPF já cadastrado. Por favor, use um CPF diferente.')
+        except Exception as e:
+            logging.error(f'Error occurred: {e}')
+            flash('Ocorreu um erro no servidor. Tente novamente mais tarde.')
+        finally:
+            # Fecha a conexão com o banco de dados
+            conn.close()        
 
     return render_template('register.html')
 
