@@ -10,9 +10,9 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        cpf = request.form['cpf']
+        cpf = ''.join(filter(str.isdigit, request.form['cpf']))
         # filtra e remove os caracteres da máscara
-        senha = ''.join(filter(str.isdigit, request.form['cpf']))
+        senha = request.form['senha']
         # Implementação de Hashing de senhas
         senha_hash = generate_password_hash(senha)
         nome = request.form['nome']
