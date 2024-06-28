@@ -9,8 +9,8 @@ from app import app, get_db_connection
 def index():
     return render_template('index.html')
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
+@app.route('/signup', methods=['GET', 'POST'])
+def sign_up():
     if request.method == 'POST':
         # filtra e remove os caracteres da máscara
         nome = request.form['nome']
@@ -42,7 +42,11 @@ def register():
             # Fecha a conexão com o banco de dados
             conn.close()        
 
-    return render_template('register.html')
+    return render_template('signup.html')
+
+@app.route('/definir_senha')
+def definir_senha():
+    return render_template('definir_senha.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
