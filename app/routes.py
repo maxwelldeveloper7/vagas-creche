@@ -1,6 +1,5 @@
 """ Definição de rotas"""
 import logging
-import time
 import sqlite3
 from flask import render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,28 +12,26 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        # filtra e remove os caracteres da máscara
+        nome = request.form['nome']
         cpf = ''.join(filter(str.isdigit, request.form['cpf']))
         # filtra e remove os caracteres da máscara
-        senha = request.form['senha']
-        # Implementação de Hashing de senhas
-        senha_hash = generate_password_hash(senha)
-        nome = request.form['nome']
-        # filtra e remove os caracteres da máscara
         telefone = ''.join(filter(str.isdigit, request.form['telefone']))
+        # senha = request.form['senha']
+        # # Implementação de Hashing de senhas
+        # senha_hash = generate_password_hash(senha)
         email = request.form['email']
-        endereco = request.form['endereco']
-        bairro = request.form['bairro']
-        ponto_referencia = request.form['ponto_referencia']
-        endereco_trabalho = request.form['endereco_trabalho']
-        bairro_trabalho = request.form['bairro_trabalho']
+        # endereco = request.form['endereco']
+        # bairro = request.form['bairro']
+        # ponto_referencia = request.form['ponto_referencia']
+        # endereco_trabalho = request.form['endereco_trabalho']
+        # bairro_trabalho = request.form['bairro_trabalho']
 
         conn = get_db_connection()
         try:
-            conn.execute('INSERT INTO usuarios (cpf, senha, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                        (cpf, senha_hash, nome, telefone, email, endereco, bairro, ponto_referencia, endereco_trabalho, bairro_trabalho))
+            conn.execute('INSERT INTO usuarios (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)',
+                        (nome, cpf, telefone, email))
             conn.commit()
-            flash('Usuário registrado com sucesso!')
-            time.sleep(2)
             return redirect(url_for('index'))
         except sqlite3.IntegrityError:
             flash('CPF já cadastrado. Tente novamente.')
