@@ -90,31 +90,12 @@ section .aviso{
     margin: 0 0 .5rem 0;
 }
 
-nav ul{
+.botoes{
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: space-around;
-}
-
-li a{
-    box-sizing: border-box;
-    width: 100px;
-    text-decoration: none;
-}
-
-.button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: var(--roxo);
-    padding: 0.6rem;
-    margin: 0.25rem;
-    width: 5rem;
-    color: #FFFFFF;
-    text-align: center;
-    text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: .9rem;
+    width: 100%;
 }
 
 .button:hover{
@@ -157,7 +138,10 @@ li a{
     display: inline;
 }
 
-button {
+button, .button{
+    box-sizing: border-box;
+    border: none;
+    outline: none;
     border-radius: 4px;
     background-color: var(--roxo);
     padding: 0.5rem;
@@ -165,10 +149,20 @@ button {
     color: #FFFFFF;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: .9rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block; /* Certifique-se de que ambos estão sendo tratados como elementos de bloco */
+    vertical-align: middle; /* Alinhe verticalmente se necessário */
+    line-height: normal; /* Certifique-se de que a linha não esteja sendo afetada */
+    height: auto; /* Pode ser necessário ajustar a altura explicitamente */
+    width: 30%;
 }
 
 button:hover {
+    background-color: var(--laranja);
+}
+
+.button:hover{
     background-color: var(--laranja);
 }
 
@@ -191,8 +185,6 @@ footer p a{
     text-decoration: none;
     color: inherit;
 }
-
-
 
 /* Larger screens */
 @media (min-width: 599px) {

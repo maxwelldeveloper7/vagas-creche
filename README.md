@@ -40,6 +40,7 @@ cadastro-creches/
 │
 ├── static/
 │   ├── css/
+│   │   └── reset.css
 │   │   └── styles.css
 │   └── js/
 │       └── script.js
