@@ -1,4 +1,4 @@
-# Cadastro de Creches
+# Vagas Creche
 
 ![Python](https://img.shields.io/badge/Python-3.10.12-green)
 ![Flask](https://img.shields.io/badge/Flask-3.0.3-black)
@@ -65,7 +65,7 @@ cadastro-creches/
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/maxwelldeveloper7/cadastro-creches.git
-   cd cadastro-creches
+   cd vagas-creche
    ```
 
 2. **Crie e ative um ambiente virtual:**
