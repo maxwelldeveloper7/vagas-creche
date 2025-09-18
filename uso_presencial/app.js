@@ -69,14 +69,16 @@ function calcAgeOnCutoff(dobStr, cutoffStr='2026-03-31'){
   return age;
 }
 function mapAgeToOutcome(age){
-  if(age >= 10) return "5º Ano do Ensino Fundamental";
+  if(age === 10) return "5º Ano do Ensino Fundamental";
   if(age === 9) return "4º Ano do Ensino Fundamental";
   if(age === 8) return "3º Ano do Ensino Fundamental";
   if(age === 7) return "2º Ano do Ensino Fundamental";
   if(age === 6) return "1º Ano do Ensino Fundamental";
-  if(age === 5) return "Pré-escola (Jardim II ou Nível II)";
-  if(age === 4) return "Pré-escola (Jardim I ou Nível I)";
-  if(age === 3) return "Educação Infantil (Maternal)";
+  if(age === 5) return "Pré-escola (5 anos)";
+  if(age === 4) return "Pré-escola (4 anos)";
+  if(age === 3) return "Educação Infantil (Berçário III)";
+  if(age === 2) return "Educação Infantil (Berçário II)";
+  if(age > -1 && age <= 1) return "Educação Infantil (Berçário I)";
   return "Idade não elegível para séries convencionais";
 }
 document.getElementById('calcAge').addEventListener('click', ()=>{
