@@ -27,7 +27,7 @@ O sistema de Cadastro de Creches é uma aplicação web desenvolvida para a Secr
 ## Estrutura do Projeto
 
 ```plaintext
-cadastro-creches/
+vagas-creche/
 │
 ├── app/
 │   ├── __init__.py
