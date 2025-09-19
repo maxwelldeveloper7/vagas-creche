@@ -1,15 +1,15 @@
 // Lista de critérios e pontos
 const CRITERIA = [
-  { id:'c1', text:'Crianças afastadas do convívio familiar', pts:20 },
-  { id:'c2', text:'Crianças encaminhadas por órgãos de proteção', pts:15 },
-  { id:'c3', text:'Crianças com registro civil incompleto', pts:13 },
-  { id:'c4', text:'Mães matriculadas na rede pública de ensino', pts:10 },
-  { id:'c5', text:'Mães com vínculo empregatício', pts:10 },
-  { id:'c6', text:'Residência em comunidade vulnerável', pts:8 },
-  { id:'c7', text:'Famílias com menor renda per capita', pts:8 },
-  { id:'c8', text:'Benefício – Bolsa Família / DCB', pts:6 },
-  { id:'c9', text:'Benefício LOAS/BPC ou seguro desemprego', pts:5 },
-  { id:'c10',text:'Pais trabalham próximos da unidade', pts:5 }
+  { id:'c1', text:'I - Crianças afastadas do convívio familiar', pts:20 },
+  { id:'c2', text:'II - Crianças encaminhadas por órgãos de proteção', pts:15 },
+  { id:'c3', text:'III - Crianças com registro civil incompleto', pts:13 },
+  { id:'c4', text:'IV - Mães matriculadas na rede pública de ensino', pts:10 },
+  { id:'c5', text:'V - Mães com vínculo empregatício', pts:10 },
+  { id:'c6', text:'VI - Residência em comunidade vulnerável', pts:8 },
+  { id:'c7', text:'VIIFamílias com menor renda per capita', pts:8 },
+  { id:'c8', text:'VIII - Benefício – Bolsa Família / DCB', pts:6 },
+  { id:'c9', text:'IX - Benefício LOAS/BPC ou seguro desemprego', pts:5 },
+  { id:'c10',text:'X - Pais trabalham próximos da unidade', pts:5 }
 ];
 
 // Renderiza checkboxes
