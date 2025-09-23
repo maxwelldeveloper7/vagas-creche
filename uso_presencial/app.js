@@ -6,7 +6,7 @@ const CRITERIA = [
   { id:'c4', text:'IV - Mães matriculadas na rede pública de ensino', pts:10 },
   { id:'c5', text:'V - Mães com vínculo empregatício', pts:10 },
   { id:'c6', text:'VI - Residência em comunidade vulnerável', pts:8 },
-  { id:'c7', text:'VIIFamílias com menor renda per capita', pts:8 },
+  { id:'c7', text:'VII - Famílias com menor renda per capita', pts:8 },
   { id:'c8', text:'VIII - Benefício – Bolsa Família / DCB', pts:6 },
   { id:'c9', text:'IX - Benefício LOAS/BPC ou seguro desemprego', pts:5 },
   { id:'c10',text:'X - Pais trabalham próximos da unidade', pts:5 }
