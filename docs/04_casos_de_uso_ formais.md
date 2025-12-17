@@ -19,7 +19,6 @@
 * 2a. Credenciais inválidas → acesso negado.
 * 4a. Código inválido ou expirado → nova tentativa.
 
----
 
 ## UC-02 — Cadastrar Instituição de Ensino
 
@@ -35,7 +34,6 @@
 3. Confirma o cadastro.
 4. O sistema valida e salva as informações.
 
----
 
 ## UC-03 — Cadastrar Usuário Institucional
 
@@ -51,7 +49,6 @@
 3. Define o perfil (Diretor ou Secretário).
 4. O sistema cria o usuário e envia credenciais.
 
----
 
 ## UC-04 — Realizar Cadastro do Responsável Legal
 
@@ -67,7 +64,6 @@
 3. O sistema envia código de confirmação.
 4. O responsável valida o cadastro.
 
----
 
 ## UC-05 — Cadastrar Criança
 
@@ -88,7 +84,6 @@
 
 * 4a. Modalidade incompatível → cadastro bloqueado.
 
----
 
 ## UC-06 — Vincular Responsáveis à Criança
 
@@ -103,7 +98,6 @@
 2. Informa os dados obrigatórios.
 3. O sistema vincula todos à criança.
 
----
 
 ## UC-07 — Inscrever Criança no Processo Seletivo
 
@@ -123,7 +117,6 @@
 
 * 1a. Período encerrado → inscrição negada.
 
----
 
 ## UC-08 — Configurar Critérios de Pontuação
 
@@ -139,7 +132,6 @@
 3. Publica o edital.
 4. O sistema bloqueia alterações.
 
----
 
 ## UC-09 — Gerar Lista de Espera
 
@@ -154,7 +146,6 @@
 2. Ordena a lista conforme regras.
 3. Disponibiliza a lista aos diretores.
 
----
 
 ## UC-10 — Alocar Criança em Vaga
 
@@ -170,7 +161,6 @@
 3. Confirma a alocação.
 4. O sistema remove a criança das demais listas.
 
----
 
 ## UC-11 — Gerar Documento de Matrícula
 
@@ -185,7 +175,6 @@
 2. Preenche o modelo padrão.
 3. Disponibiliza o documento.
 
----
 
 ## UC-12 — Notificar Responsáveis
 
@@ -200,7 +189,6 @@
 2. Seleciona os canais configurados.
 3. Envia a notificação.
 
----
 
 ## UC-13 — Confirmar Matrícula Presencial
 
@@ -215,7 +203,6 @@
 2. O sistema encerra o processo.
 3. O registro é auditado.
 
----
 
 ## UC-14 — Acompanhar Inscrição
 
@@ -224,7 +211,6 @@
 - **Pré-condições:** Inscrição realizada.
 - **Pós-condições:** Status exibido ao responsável.
 
----
 
 ## UC-15 — Auditar Ações do Sistema
 
