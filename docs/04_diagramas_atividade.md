@@ -17,3 +17,8 @@
 
 ## 4) Diagrama de Atividades — Subfluxo de Matrícula (validação documental na matrícula)
 ![](../docs/assets/atividade_fluxo_4.png)
+
+---
+
+## 5) Diagrama de Atividades — Subfluxo Vagas Remanescentes (Desistência / Não Comparecimento / Próxima Convocação)
+![](../docs/assets/atividade_fluxo_5.png)
