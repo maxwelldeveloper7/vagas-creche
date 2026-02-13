@@ -1,4 +1,10 @@
 @startuml
+
+skinparam activity {
+  BackgroundColor #FEFECE
+  BorderColor #A80036
+}
+
 title Fluxo Principal - Demanda Educação Infantil (Inscrição até Matrícula)
 
 start

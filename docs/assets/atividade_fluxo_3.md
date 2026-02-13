@@ -1,4 +1,10 @@
 @startuml
+
+skinparam activity {
+  BackgroundColor #FEFECE
+  BorderColor #A80036
+}
+
 title Subfluxo - Alocação de Vaga (com Integral/Parcial)
 
 start

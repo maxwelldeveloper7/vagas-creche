@@ -1,4 +1,9 @@
 @startuml
+skinparam activity {
+  BackgroundColor #FEFECE
+  BorderColor #A80036
+}
+
 title Subfluxo - Inscrição Presencial (Unidade)
 
 start

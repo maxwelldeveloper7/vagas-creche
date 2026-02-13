@@ -1,10 +1,16 @@
 @startuml
+
+skinparam activity {
+  BackgroundColor #FEFECE
+  BorderColor #A80036
+}
+
 title Subfluxo - Matrícula Presencial (Validação Documental)
 
 start
 
-partition "Diretor/Secretário da Unidade" {
-  :Abrir inscrição com status = Convocado #FFF8DC;
+partition "Diretor/Secretário da Unidade"{
+  :Abrir inscrição com status = Convocado;
   :Receber responsável na unidade;
   :Conferir documentos físicos;
   :Registrar resultado da conferência\n(Completa/Pendência/Indeferido);
