@@ -1,75 +1,183 @@
-# Levantamento de requisitos
-## Etapa 1 — Contexto e Objetivo do Sistema
+# LEVANTAMENTO DE REQUISITOS
 
-O sistema terá como finalidade **mapear e gerenciar a demanda por vagas em creches e educação infantil**, envolvendo:
-* **Instituições participantes**
-  * Creches públicas municipais
-  * Creches privadas conveniadas à prefeitura
+## Sistema Municipal de Gestão de Demanda por Vagas na Educação Infantil
 
-* **Faixas etárias / modalidades**
-  * Berçário I: 6 meses a 1 ano
-  * Berçário II: 2 anos a 2 anos, 11 meses e 29 dias
-  * Berçário III: 3 anos a 3 anos, 11 meses e 29 dias
-  * Educação Infantil:
-    * 1º período: 4 anos a 4 anos, 11 meses e 29 dias
-    * 2º período: 5 anos a 5 anos, 11 meses e 29 dias
+---
 
-* **Perfis de usuários**
-  * Secretaria Municipal de Educação (acesso total aos dados, cadastram instituições e diretores)
-  * Diretores das instituições (cadastram turmas e previsão de vagas; alocam crianças)
-  * Responsáveis legais (realizam a inscrição da criança)
+# ETAPA 1 — CONTEXTO, FINALIDADE E GOVERNANÇA
 
-* **Fluxo macro**
-  1. Diretores cadastram instituições, turmas e previsão de vagas para o ano seguinte
-  2. Responsáveis realizam inscrições online das crianças
-  3. Encerrado o período de inscrição, diretores acessam a lista de espera
-  4. Diretores alocam crianças nas vagas disponíveis
-  5. Sistema gera documento de matrícula (para impressão)
-  6. Sistema envia notificação ao responsável com orientações para comparecimento
+## 1.1 Finalidade
 
-* **Volume estimado**
-  * Entre 1.000 e 1.500 crianças por ciclo de inscrição
+O sistema terá como objetivo:
 
+* Mapear e gerenciar a demanda por vagas em creches e pré-escolas;
+* Aplicar automaticamente os critérios de prioridade definidos no edital anual;
+* Gerar lista de espera unificada e auditável;
+* Controlar alocação, matrícula e histórico de movimentações;
+* Garantir transparência, rastreabilidade e conformidade administrativa.
 
-## Etapa 2 — Cadastro da Criança
+O sistema substituirá planilhas e cadastros manuais, mantendo base única municipal.
 
-### Dados obrigatórios
+---
+
+## 1.2 Abrangência Institucional
+
+### Instituições participantes
+
+* Creches públicas municipais
+* Escolas municipais com pré-escola
+* Creches privadas conveniadas (quando previsto em edital)
+
+Todas vinculadas à Secretaria Municipal de Educação.
+
+---
+
+## 1.3 Modalidades e Faixas Etárias
+
+As faixas etárias serão **parametrizáveis por ciclo letivo**, conforme edital vigente.
+
+Exemplo base (ajustável anualmente):
+
+* Berçário I
+* Berçário II
+* Berçário III
+* 1º Período
+* 2º Período
+
+O sistema calculará automaticamente a faixa etária com base:
+
+* Na data de nascimento
+* No corte etário definido para o ano letivo
+
+Não haverá parametrização fixa no código.
+
+---
+
+## 1.4 Perfis de Usuário
+
+### 1. Administrador do Sistema (TI)
+
+* Acesso técnico total
+* Gestão estrutural do sistema
+
+### 2. Secretaria Municipal de Educação
+
+* Cadastro de instituições
+* Cadastro de diretores/secretários
+* Parametrização anual:
+
+  * Critérios de prioridade
+  * Pesos
+  * Calendário
+  * Modalidades
+  * Faixas etárias
+* Visualização global
+* Alterações extraordinárias com justificativa obrigatória e registro em log especial
+
+### 3. Diretor / Secretário de Instituição
+
+* Acesso restrito à própria unidade
+* Cadastro presencial das crianças
+* Cadastro de turmas e previsão de vagas
+* Alocação de vagas
+* Confirmação de matrícula
+
+---
+
+## 1.5 Autenticação
+
+* Apenas usuários institucionais realizarão login.
+* Responsáveis **não possuirão login ou acesso ao sistema**.
+* A autenticação será realizada por:
+
+  * CPF institucional + senha
+  * Verificação adicional (quando aplicável)
+
+---
+
+# ETAPA 2 — ESTRUTURA DO CICLO LETIVO
+
+O sistema trabalhará por **Ciclo Letivo Anual**.
+
+Cada ciclo conterá:
+
+* Critérios e pesos
+* Período de inscrição
+* Período de matrícula
+* Modalidades ativas
+* Vagas por unidade
+
+Encerrado o ciclo:
+
+* Dados permanecem arquivados
+* Novo ciclo é criado
+* Não há sobreposição de regras
+
+---
+
+# ETAPA 3 — CADASTRO DA CRIANÇA (INSCRIÇÃO)
+
+## 3.1 Forma de Inscrição
+
+* Inscrição exclusivamente presencial na instituição.
+* Registro realizado pelo diretor ou servidor designado.
+* Não haverá upload de documentos nesta etapa.
+* Conferência documental ocorrerá apenas na matrícula.
+
+---
+
+## 3.2 Dados Obrigatórios da Criança
+
 * Nome completo
 * Data de nascimento
 * Sexo
 * CPF
 * Cartão SUS
-* NIS (opcional)
+* NIS (quando houver)
+* Situação educacional atual
 
-### Regras automáticas
-* Cálculo automático da faixa etária com base na data de nascimento
-* Bloqueio de inscrição em modalidade incompatível com a idade
+---
 
-### Situação educacional
-* Situação atual da criança:
-  * Em casa
-  * Em outra escola
-  * Transferência
-* Não será registrado histórico escolar anterior
+## 3.3 Regras Automáticas
 
-### Necessidades específicas e prioridade
-* Indicação de:
-  * Deficiência ou necessidades educacionais especiais
-  * Existência de laudo (sem upload)
-  * Prioridade legal (ex.: deficiência, vulnerabilidade social)
+* Cálculo automático da faixa etária
+* Bloqueio de modalidade incompatível
+* Validação de duplicidade municipal (CPF + Data de Nascimento)
 
-### Documentação
-* Inscrição realizada apenas por preenchimento de dados
-* Conferência e autenticação documental ocorrerão presencialmente, no ato da matrícula
+Caso haja duplicidade:
 
+* Sistema alerta
+* Não permite novo cadastro sem justificativa formal registrada
 
-## Etapa 3 — Cadastro dos Responsáveis
+---
 
-### Estrutura de responsáveis
-* Permitido cadastrar **mais de dois responsáveis** por criança
-* Abrange responsável legal, pais, avós, tutores, entre outros
+## 3.4 Critérios de Prioridade
 
-### Dados obrigatórios do responsável
+* Parametrizados anualmente pela Secretaria
+* Fixos após publicação do edital
+* Cumulativos
+* Pontuação automática
+* Não editáveis após início das inscrições
+
+O sistema:
+
+* Calcula pontuação automaticamente
+* Ordena lista por pontuação (quando aplicável)
+
+---
+
+# ETAPA 4 — CADASTRO DOS RESPONSÁVEIS
+
+## 4.1 Estrutura
+
+* Permitido cadastrar múltiplos responsáveis
+* Não haverá login para responsáveis
+* Todos poderão receber comunicações
+
+---
+
+## 4.2 Dados Obrigatórios
+
 * Nome completo
 * CPF
 * RG
@@ -77,210 +185,199 @@ O sistema terá como finalidade **mapear e gerenciar a demanda por vagas em crec
 * Grau de parentesco
 * Endereço completo
 * Telefone
-* E-mail
+* E-mail (quando houver)
 
-### Comunicação
-* **Não haverá responsável principal**
-* Todos os responsáveis cadastrados receberão comunicações do sistema
+---
 
-### Autenticação e segurança
-* Criação de login e senha obrigatória
-* Acesso via **CPF + senha**
-* Verificação adicional por **código de confirmação** (e-mail e/ou SMS)
+## 4.3 LGPD
 
-### Canais de notificação
-* E-mail
-* SMS
-* WhatsApp
+* No momento da inscrição, será assinado em papel:
 
+  * Termo de ciência e autorização de tratamento de dados
+* O sistema registrará:
 
-## Etapa 4 — Instituições, Turmas e Vagas
+  * Campo “Termo LGPD assinado: Sim/Não”
+* O documento físico permanecerá arquivado na instituição
 
-### Cadastro da instituição
-Campos obrigatórios:
-* Nome da instituição
+---
+
+# ETAPA 5 — INSTITUIÇÕES, TURMAS E VAGAS
+
+## 5.1 Cadastro da Instituição
+
+Realizado pela Secretaria.
+
+Campos:
+
+* Nome
 * INEP
-* Tipo:
-  * Pública municipal
-  * Privada conveniada
-* Endereço completo
+* Tipo
+* Endereço
 * Telefone
-* E-mail institucional
+* E-mail
 
-### Gestão de cadastro da instituição
-* As instituições e seus usuários serão cadastrados pela Secretaria de Educação
+---
 
-### Gestão de usuários da instituição
-* Cada instituição terá **apenas um diretor responsável e/ou uma secretária**
-* Será permitido um usuário com perfil de direção/gestão e outro com perfil de secretaria
+## 5.2 Gestão de Usuários
 
-### Cadastro de turmas
+Cada instituição poderá ter:
+
+* 1 Diretor
+* 1 Secretário
+
+Não será permitido número ilimitado de usuários.
+
+---
+
+## 5.3 Cadastro de Turmas
+
 Para cada turma:
-* Modalidade:
-  * Berçário I, II, III
-  * Educação Infantil – 1º ou 2º período
+
+* Modalidade
+* Ano letivo
 * Turno:
+
   * Manhã
   * Tarde
   * Integral
-* Quantidade total de vagas
-* Ano letivo de referência
+* Quantidade de vagas
 
-### Regras de vagas
-* A previsão de vagas **só poderá ser alterada** após o cadastro inicial mediante **solicitação por email ao suporte técnico** justificando o motivo da alteração, e o suporte fará a alteração.
-* Edição **bloqueada automaticamente** após o início do período de inscrições
+Alteração de vagas:
 
-### Alocação de crianças
-* O sistema **não realizará alocação automática**
-* O sistema **ordenará a lista de espera** com base em:
-  * Pontuação por prioridade
-  * Regras definidas e parametrizadas pela Secretaria de Educação
-* Diretores visualizam a lista ordenada e realizam a alocação
-
-
-## Etapa 5 — Fluxo de Inscrição, Pontuação e Lista de Espera
-
-### Período de inscrições
-* Haverá **um único período anual** de inscrições
-* Datas de início e término:
-  * Definidas pela Secretaria de Educação
-  * Formalizadas por **edital de chamamento**
-
-### Escolha de instituições
-* O responsável poderá escolher **duas instituições**
-  * 1ª opção: principal
-  * 2ª opção: alternativa
-
-### Regras de pontuação
-* Critérios de prioridade:
-  * **Fixos por ano letivo**
-  * Não editáveis após publicação
-  * Cumulativos (somatório de pontos)
-* Parametrização realizada exclusivamente pela Secretaria de Educação
-
-### Lista de espera
-* Lista **única por instituição e modalidade**
-* Turno **não influencia a ordenação**
-  * Definição do turno ocorre no ato da matrícula, conforme disponibilidade e preferência do responsável
-
-### Atualizações e auditoria
-* Ao ser alocada, a criança:
-  * É removida automaticamente das demais listas
-* O sistema manterá:
-  * **Histórico completo (log)** de todas as movimentações
-
-
-## Etapa 6 — Matrícula, Documentos e Notificações
-
-### Documento de matrícula
-* Será gerado **um modelo único para toda a rede**
-* Documento no formato de **ficha de matrícula**
-* Campos pré-preenchidos pelo sistema:
-  * Nome da criança
-  * Data de nascimento
-  * Naturalidade
-  * Nacionalidade
-  * Estado
-  * Cor/Raça
-  * NIS
-  * Cartão SUS
-  * Modalidade e período:
-    * Creche:
-      * Berçário I, II ou III
-      * Indicação de atendimento parcial
-    * Pré-escola:
-      * 1º período (4 anos)
-      * 2º período (5 anos)
-  * Dados do(s) responsável(is)
-  * Dados do local de trabalho dos responsáveis (quando existentes)
-
-* Campos não coletados pelo sistema permanecerão **em branco**, para preenchimento manual na instituição
-
-### Prazo para matrícula
-* O sistema controlará **prazo máximo para comparecimento**
-* Prazo:
-  * **Configurável pela Secretaria de Educação**
-  * Não fixo
-
-### Perda e gestão da vaga
-* A vaga **não será liberada automaticamente**
-* O sistema:
-  * Sinalizará a próxima criança da lista de espera
-  * Manterá controle manual pela instituição/secretaria
-
-### Notificações aos responsáveis
-* Momentos de notificação:
-  * Alocação da vaga
-  * Lembrete de prazo
-  * Perda da vaga
-* Canais:
-  * E-mail
-  * SMS
-  * WhatsApp
-    (utilizados conforme configuração institucional)
-
-### Confirmação da matrícula
-* A instituição deverá:
-  * Confirmar no sistema a efetivação presencial da matrícula
-* Essa confirmação:
-  * **Encerra o processo da criança no sistema**
-
-
-## Etapa 7 — Perfis de Usuário, Permissões e Auditoria
-
-### Perfis de usuário
-Perfis definidos e validados:
-1. **Administrador do Sistema (TI / Prefeitura)**
-   * Usuário inserido manualmente
-   * Não visível para os demais perfis
-   * Acesso técnico e administrativo total
-
-2. **Secretaria Municipal de Educação**
-   * Perfil institucional de gestão normativa
-
-3. **Diretor de Instituição**
-   * Perfil operacional restrito à própria unidade
-
-4. **Responsável Legal**
-   * Perfil cidadão para inscrição e acompanhamento
+* Apenas antes da abertura das inscrições
+* Após abertura: somente por solicitação formal à Secretaria
+* Sistema bloqueia edição automática
 
 ---
 
-### Permissões por perfil
+# ETAPA 6 — LISTA DE ESPERA E ORDENAÇÃO
 
-#### Secretaria Municipal de Educação
-* Cadastrar Instituições, Diretores e/ou Secretários: **Sim**
-* Visualizar todos os cadastros: **Sim**
-* Editar dados de crianças e responsáveis: **Não**
-* Alterar status de inscrições e alocações: **Não**
-* Gerenciar critérios e pontuações:
-  * **Sim**, exclusivamente na fase de criação do edital
-  * **Bloqueado** após o início das inscrições e do processo de matrícula
+## 6.1 Lista
 
-#### Diretor e Secretário de Instituição
-* Visualizar apenas dados da própria instituição: **Sim**
-* Alocar crianças nas vagas: **Sim**
-* Confirmar matrícula presencial: **Sim**
-* Editar dados cadastrais da criança ou responsáveis: **Não**
+* Lista única por instituição e modalidade
+* Ordenação automática:
 
-#### Responsável Legal
-* Editar dados após a inscrição: **Sim**
-* Acompanhar posição na lista de espera:
-
-  * **Sim**, apenas sua própria posição
-  * Sem acesso a dados de outros inscritos
-* Cancelar inscrição: **Sim**
+  * Pontuação
+  * Critérios parametrizados
+  * Ordem definida em edital
 
 ---
 
-### Auditoria e rastreabilidade
-O sistema deverá manter **registro completo (logs)** de:
-* Acessos ao sistema
-* Alterações de dados
-* Alocações e cancelamentos
+## 6.2 Turno
+
+O turno **não interfere na ordenação**.
+
+No momento da alocação, o diretor deverá informar:
+
+* Se a vaga será:
+
+  * Integral
+  * Parcial
+  * Manhã
+  * Tarde
+
+---
+
+## 6.3 Alocação
+
+* Sistema sugere o próximo da lista
+* Diretor confirma alocação
+* Caso não siga a ordem:
+
+  * Justificativa obrigatória
+  * Registro em log especial
+
+Ao ser alocada:
+
+* A criança é removida das demais listas automaticamente
+
+---
+
+# ETAPA 7 — MATRÍCULA E VALIDAÇÃO DOCUMENTAL
+
+## 7.1 Documento de Matrícula
+
+* Modelo único municipal
+* Gerado automaticamente
+* Campos pré-preenchidos
+
+---
+
+## 7.2 Validação de Documentos
+
+A validação ocorrerá **somente na matrícula presencial**.
+
+Documentos serão:
+
+* Conferidos fisicamente
+* Validados pela instituição
+* Sistema marcará como:
+
+  * Documentação completa
+  * Pendência
+  * Indeferido
+
+---
+
+## 7.3 Prazo
+
+* Prazo configurável pela Secretaria
+* Sistema envia notificações
+* Não haverá liberação automática de vaga
+* Diretor controlará manualmente a perda de vaga
+
+---
+
+# ETAPA 8 — STATUS DO PROCESSO
+
+Cada inscrição possuirá estados:
+
+* Inscrito
+* Em análise
+* Classificado
+* Convocado
+* Matriculado
+* Desistente
+* Indeferido
+* Encerrado
+
+Transições registradas em log.
+
+---
+
+# ETAPA 9 — AUDITORIA E RASTREABILIDADE
+
+O sistema manterá registro completo de:
+
+* Acessos
+* Alterações
+* Alocações
+* Cancelamentos
+* Justificativas
 * Emissão de documentos
 
-Esses registros garantem:
-* Transparência administrativa
-* Rastreabilidade de decisões
-* Conformidade com princípios de controle público
+Logs não editáveis.
+
+---
+
+# ETAPA 10 — SEGURANÇA E CONTROLE
+
+* Controle de acesso por perfil
+* Restrição por unidade
+* Criptografia em trânsito
+* Backup automático
+* Histórico por ciclo letivo
+* Impossibilidade de edição retroativa sem registro
+
+---
+
+# AVALIAÇÃO FINAL
+
+O modelo agora:
+
+* Elimina risco de manipulação manual de pontuação
+* Mantém descentralização com controle
+* Separa inscrição e validação documental
+* Atende à exigência de lista unificada
+* Mantém rastreabilidade jurídica
+* Reduz risco institucional
