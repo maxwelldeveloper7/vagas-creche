@@ -128,21 +128,106 @@ Encerrado o ciclo:
 
 ## 3.2 Dados Obrigatórios da Criança
 
+Campos obrigatórios conforme edital:
+
 * Nome completo
 * Data de nascimento
 * Sexo
+* Número da certidão de nascimento
 * CPF
 * Cartão SUS
 * NIS (quando houver)
 * Situação educacional atual
+* Número de cadastro municipal (gerado automaticamente pelo sistema)
 
 ---
 
-## 3.3 Regras Automáticas
+## 3.3 Dados de Solicitação de Vaga
 
-* Cálculo automático da faixa etária
-* Bloqueio de modalidade incompatível
-* Validação de duplicidade municipal (CPF + Data de Nascimento)
+Campos obrigatórios:
+
+* Unidade escolar pretendida (1ª opção)
+* Unidade escolar alternativa (quando aplicável)
+* Modalidade pretendida (calculada automaticamente com base na idade)
+* Situação atual da criança:
+
+  * Em casa
+  * Em outra instituição
+  * Transferência
+* Vaga pleiteada
+
+---
+
+## 3.4 Dados Socioeconômicos da Criança e da Família
+
+Campos obrigatórios e opcionais conforme edital:
+
+* Renda per capita familiar
+* Número do NIS da criança (quando houver)
+* Número do cartão SUS
+* Informação sobre participação em programas sociais
+
+Campos booleanos (Sim/Não):
+
+* Beneficiário do Bolsa Família ou equivalente
+* Beneficiário do BPC / LOAS
+* Beneficiário de seguro desemprego
+* Família em situação de vulnerabilidade social
+
+---
+
+## 3.5 Critérios de Prioridade e Condições Especiais
+
+Campos booleanos (Sim/Não):
+
+* Criança com deficiência
+
+* Criança com transtorno do desenvolvimento
+
+* Criança com altas habilidades/superdotação
+
+* Criança com intolerância alimentar ou condição médica relevante
+
+* Criança em situação de acolhimento institucional
+
+* Criança com encaminhamento por:
+
+  * Conselho Tutelar
+  * CRAS
+  * CREAS
+  * Vara da Infância
+  * Casa de acolhimento
+
+* Existência de irmão matriculado na rede
+
+* Responsável estudante matriculado na rede pública
+
+* Responsável em atividade profissional
+
+---
+
+## 3.6 Endereço da Criança
+
+Campos obrigatórios:
+
+* Logradouro
+* Número
+* Complemento (quando houver)
+* Bairro
+* Cidade
+* CEP
+* Ponto de referência
+
+---
+
+## 3.7 Regras Automáticas
+
+O sistema deverá:
+
+* Calcular automaticamente a faixa etária
+* Determinar automaticamente a modalidade compatível
+* Bloquear modalidade incompatível
+* Validar duplicidade municipal (CPF + Data de Nascimento)
 
 Caso haja duplicidade:
 
@@ -151,18 +236,14 @@ Caso haja duplicidade:
 
 ---
 
-## 3.4 Critérios de Prioridade
+## 3.8 Geração de Protocolo
 
-* Parametrizados anualmente pela Secretaria
-* Fixos após publicação do edital
-* Cumulativos
-* Pontuação automática
-* Não editáveis após início das inscrições
+Ao concluir a inscrição, o sistema deverá gerar automaticamente:
 
-O sistema:
-
-* Calcula pontuação automaticamente
-* Ordena lista por pontuação (quando aplicável)
+* Número único de cadastro
+* Data e hora da inscrição
+* Unidade responsável pelo cadastro
+* Identificação do usuário institucional que realizou o cadastro
 
 ---
 
@@ -176,7 +257,9 @@ O sistema:
 
 ---
 
-## 4.2 Dados Obrigatórios
+## 4.2 Dados Obrigatórios do Responsável
+
+Campos obrigatórios conforme edital:
 
 * Nome completo
 * CPF
@@ -184,12 +267,43 @@ O sistema:
 * Data de nascimento
 * Grau de parentesco
 * Endereço completo
+* Bairro
+* Cidade
+* CEP
 * Telefone
-* E-mail (quando houver)
+* E-mail
 
 ---
 
-## 4.3 LGPD
+## 4.3 Dados do Local de Trabalho do Responsável
+
+Campos (quando aplicável):
+
+* Nome do empregador
+* Endereço do local de trabalho
+* Bairro
+* Cidade
+* Telefone do trabalho
+
+---
+
+## 4.4 Dados Socioeconômicos do Responsável
+
+Campos opcionais conforme edital:
+
+* Situação de emprego:
+
+  * Empregado formal
+  * Autônomo
+  * Desempregado
+
+* Declaração de renda
+
+* Participação em programas sociais
+
+---
+
+## 4.5 LGPD
 
 * No momento da inscrição, será assinado em papel:
 
