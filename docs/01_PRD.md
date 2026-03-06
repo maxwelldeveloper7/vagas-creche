@@ -1,4 +1,4 @@
-# PRD — Sistema de Inscrição em Creche
+# PRD (Documento de Requisitos de ProdutO) — Sistema de Inscrição em Creche
 
 ## 1. Visão Geral do Produto
 
