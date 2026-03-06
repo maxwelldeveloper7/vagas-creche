@@ -68,7 +68,6 @@ entity Inscricao {
   numero_inscricao : text
   data_inscricao : datetime
   id_usuario : int <<FK>>
-  id_unidade : int <<FK>>
   id_responsavel : int <<FK>>
   id_crianca : int <<FK>>
 }
@@ -79,14 +78,11 @@ Usuario ||--|| Operador
 
 ' RELACIONAMENTOS
 UnidadeEscolar ||--o{ Operador : possui
-UnidadeEscolar }o--o{ Administrador : cadastra
 Operador ||--o{ Inscricao : realiza
-Operador ||--o{ Administrador : cadastra
 
 Responsavel ||--o{ Crianca : responsavel_por
 Crianca ||--|| Inscricao : gera
 
 UnidadeEscolar ||--o{ Inscricao : recebe
-Administrador ||--o{ Inscricao : visualiza
 
 @enduml
