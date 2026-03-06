@@ -1,176 +1,92 @@
 @startuml
-' DER / Modelo Entidade-Relacionamento (corrigido e consistente com NESMA)
-' ILF = mantido pelo sistema | EIF = referenciado (externo)
+title Sistema de Inscrição em Creche — Diagrama ER
 
-hide circle
-skinparam linetype ortho
-skinparam classAttributeIconSize 0
-
-' ====== EIF (externo) ======
-class Edital <<EIF>> {
-  +id
-  +ano
-  +numero
-  +periodo_pre_matricula_ini
-  +periodo_pre_matricula_fim
-  +periodo_matricula_ini
-  +periodo_matricula_fim
-  +status
+entity Usuario {
+  +id_usuario : int <<PK>>
+  nome : text
+  login : text
+  senha_hash : text
 }
 
-' ====== ILFs (internos) ======
-class Unidade <<ILF>> {
-  +id
-  +nome
-  +codigo
+entity Administrador {
+  +id_usuario : int <<PK,FK>>
 }
 
-class Usuario <<ILF>> {
-  +id
-  +login
-  +senha_hash
-  +perfil  ' ADMIN/SECRETARIA/DIRETOR/SECRETARIO
-  +unidade_id (FK, opcional)
+entity Operador {
+  +id_usuario : int <<PK,FK>>
+  id_unidade : int <<FK>>
+  tipo_operador : enum
 }
 
-class Criterio <<ILF>> {
-  +id
-  +edital_id (ref EIF)
-  +descricao
-  +pontos_ou_peso
-  +tipo_dado  ' booleano, numerico, faixa, lista/enum, texto
-  +nome_campo_formulario  ' ex.: renda_per_capita, possui_deficiencia
+entity UnidadeEscolar {
+  +id_unidade : int <<PK>>
+  nome_unidade : text
 }
 
-class Aluno <<ILF>> {
-  +id
-  +nome
-  +data_nascimento
-  +cpf (opcional)
+entity Responsavel {
+  +id_responsavel : int <<PK>>
+  nome : text
+  cpf : text
+  rg : text
+  telefone : text
+  parentesco : enum
+  endereco : text
+  ponto_referencia : text
+  comprovante_endereco : boolean
+  mae_vinculo_empregaticio : boolean
+  comprovante_endereco_trabalho : boolean
+  demonstrativo_credito_beneficio : boolean
+  loas_bpc_seguro_desemprego : boolean
+  autonomo : boolean
+  mae_matriculada_rede_publica : boolean
+  vulnerabilidade_social : boolean
+  declaracao_mae_adolescente : boolean
+  renda_percapita : decimal
 }
 
-class Responsavel <<ILF>> {
-  +id
-  +nome
-  +cpf
-  +telefone
-  +email (opcional)
-  +endereco
+entity Crianca {
+  +id_crianca : int <<PK>>
+  nome : text
+  data_nascimento : date
+  cpf : text
+  nome_pai : text
+  nome_mae : text
+  nis : text
+  cartao_sus : text
+  situacao : enum
+  vaga_pleiteada : enum
+  certidao_sem_pai_ou_mae : boolean
+  irmao_matriculado : boolean
+  encaminhamento_institucional : boolean
+  laudo_deficiencia_neoplasia : boolean
+  laudo_intolerancia_alimentar : boolean
+  laudo_neurodivergente : boolean
 }
 
-class PreMatricula <<ILF>> {
-  +id
-  +edital_id (ref EIF)
-  +aluno_id (FK)
-  +responsavel_id (FK)
-  +unidade_pretendida_id (FK)
-  +modalidade
-  +turno
-  +protocolo
-  +status
-  +data_hora
-  +dados_socioeconomicos
-  +lgpd_confirmado (S/N)
-  +lgpd_confirmado_em
-  +lgpd_confirmado_por_usuario_id (FK)
+entity Inscricao {
+  +id_inscricao : int <<PK>>
+  numero_inscricao : text
+  data_inscricao : datetime
+  id_usuario : int <<FK>>
+  id_unidade : int <<FK>>
+  id_responsavel : int <<FK>>
+  id_crianca : int <<FK>>
 }
 
-class PreMatriculaCriterio <<ILF>> {
-  +id
-  +pre_matricula_id (FK)
-  +criterio_id (FK)
-  +valor_resposta
-}
+' HERANÇA
+Usuario ||--|| Administrador
+Usuario ||--|| Operador
 
-class VagaOfertada <<ILF>> {
-  +id
-  +edital_id (ref EIF)
-  +unidade_id (FK)
-  +modalidade
-  +turno
-  +quantidade_total
-  +quantidade_ocupada
-}
+' RELACIONAMENTOS
+UnidadeEscolar ||--o{ Operador : possui
+UnidadeEscolar }o--o{ Administrador : cadastra
+Operador ||--o{ Inscricao : realiza
+Operador ||--o{ Administrador : cadastra
 
-class Convocacao <<ILF>> {
-  +id
-  +pre_matricula_id (FK)
-  +data_hora_emissao
-  +status
-  +prazo (opcional)
-}
+Responsavel ||--o{ Crianca : responsavel_por
+Crianca ||--|| Inscricao : gera
 
-class Matricula <<ILF>> {
-  +id
-  +pre_matricula_id (FK)
-  +data_hora
-  +usuario_atendente_id (FK)
-  +status
-}
-
-class Auditoria <<ILF>> {
-  +id
-  +usuario_id (FK)
-  +evento
-  +entidade
-  +entidade_id
-  +data_hora
-  +detalhes
-}
-
-class Notificacao <<ILF>> {
-  +id
-  +tipo  ' pre-matricula/convocacao/matricula
-  +referencia_entidade
-  +referencia_id
-  +data_hora
-  +status
-}
-
-' ====== RELACIONAMENTOS ======
-
-' Usuário/unidade
-Unidade "1" <-- "0..*" Usuario : vinculo(opcional)
-
-' Pré-matrícula (núcleo)
-Aluno "1" <-- "0..*" PreMatricula
-Responsavel "1" <-- "0..*" PreMatricula
-Unidade "1" <-- "0..*" PreMatricula : unidade_pretendida
-
-PreMatricula "1" <-- "0..*" PreMatriculaCriterio : respostas
-Criterio "1" <-- "0..*" PreMatriculaCriterio
-
-' Vagas por oferta
-Unidade "1" <-- "0..*" VagaOfertada
-
-note right of VagaOfertada
-Restrição recomendada:
-UNIQUE(edital_id, unidade_id, modalidade, turno)
-end note
-
-' Convocação e matrícula
-PreMatricula "1" <-- "0..*" Convocacao
-PreMatricula "1" <-- "0..1" Matricula
-
-' Auditoria e notificações
-Usuario "1" <-- "0..*" Auditoria
-Usuario "1" <-- "0..*" Notificacao
-
-' ====== REFERÊNCIAS ao EIF (sem “manter” o edital) ======
-Edital ..> Criterio : referência normativa
-Edital ..> PreMatricula : referência normativa
-Edital ..> VagaOfertada : referência normativa
-
-note top of Edital
-<<EIF>> Edital é fonte externa (RN-16):
-- não é criado/alterado/excluído pelo sistema
-- apenas referenciado
-end note
-
-note right of Criterio
-nome_campo_formulario:
-- identifica o campo exibido no formulário (RN-12)
-- usado para validação de coerência (RN-13)
-end note
+UnidadeEscolar ||--o{ Inscricao : recebe
+Administrador ||--o{ Inscricao : visualiza
 
 @enduml
