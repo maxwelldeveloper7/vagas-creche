@@ -1,11 +1,3 @@
-Considerando o cenário informado — **até 12 acessos simultâneos**, uso interno administrativo e infraestrutura simples — a escolha por uma **arquitetura monolítica baseada em Flask** é tecnicamente adequada.
-
-Essa abordagem segue o princípio de **simplicidade arquitetural** recomendado em projetos de pequeno porte por **Karl Wiegers**, evitando complexidade desnecessária como microsserviços ou APIs desacopladas.
-
-A seguir está a **definição arquitetural formal do sistema**.
-
----
-
 # Arquitetura do Sistema
 
 ## Tipo de Arquitetura
