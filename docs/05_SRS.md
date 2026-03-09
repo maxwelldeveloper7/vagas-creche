@@ -86,12 +86,14 @@ O sistema será uma aplicação **web administrativa** integrada a um banco de d
 Arquitetura geral:
 
 ```
-Usuários
-   │
-Interface Web
-   │
-API Backend
-   │
+Usuário (Navegador)
+        │
+        │ HTTP
+        ▼
+Servidor Flask
+        │
+        │ ORM / SQL
+        ▼
 Banco de Dados PostgreSQL
 ```
 
@@ -187,6 +189,8 @@ O sistema deve validar as credenciais e identificar o perfil do usuário.
 
 ---
 
+![](../docs/assets/Diagramas_UML/sequencia/RF01.png)
+
 ## RF-02 — Cadastro de Unidades Escolares
 
 O sistema deve permitir que administradores registrem unidades escolares.
@@ -196,7 +200,8 @@ Dados:
 * nome da unidade
 * endereço
 * status ativo
-
+---
+![](./assets/Diagramas_UML/sequencia/RF02.png)
 ---
 
 ## RF-03 — Cadastro de Usuários
@@ -212,7 +217,8 @@ Dados:
 * email
 * perfil
 * unidade escolar
-
+---
+![](./assets/Diagramas_UML/sequencia/RF03.png)
 ---
 
 ## RF-04 — Iniciar Inscrição
@@ -223,6 +229,8 @@ Regras:
 
 * verificar duplicidade
 * impedir inscrição duplicada
+---
+![](../docs/assets/Diagramas_UML/sequencia/RF04.png)
 
 ---
 
@@ -239,7 +247,8 @@ Dados obrigatórios:
 * parentesco
 
 Dados socioeconômicos opcionais também poderão ser registrados.
-
+---
+![](./assets/Diagramas_UML/sequencia/RF05.png)
 ---
 
 ## RF-06 — Cadastro de Criança
@@ -259,6 +268,8 @@ Dados:
 Também devem ser registrados indicadores sociais e médicos.
 
 ---
+![](./assets/Diagramas_UML/sequencia/RF06.png)
+---
 
 ## RF-07 — Cadastro de Irmãos
 
@@ -271,6 +282,8 @@ Se confirmado:
 * campos permanecerão editáveis
 
 ---
+![](./assets/Diagramas_UML/sequencia/RF07.png)
+---
 
 ## RF-08 — Conferência da Inscrição
 
@@ -281,6 +294,8 @@ Formato:
 * semelhante a formulário institucional
 * campos lógicos exibidos apenas quando verdadeiros
 
+---
+![](./assets/Diagramas_UML/sequencia/RF08.png)
 ---
 
 ## RF-09 — Registro da Inscrição
@@ -296,6 +311,8 @@ O sistema deve registrar a inscrição contendo:
 Cada inscrição receberá **número único**.
 
 ---
+![](./assets/Diagramas_UML/sequencia/RF09.png)
+---
 
 ## RF-10 — Geração de Comprovante
 
@@ -310,6 +327,8 @@ Após registrar a inscrição, o sistema deve gerar um comprovante contendo:
 O comprovante deve ser gerado em **PDF criptografado**.
 
 ---
+![](./assets/Diagramas_UML/sequencia/RF10.png)
+---
 
 ## RF-11 — Consulta de Inscrições
 
@@ -323,6 +342,8 @@ Filtros disponíveis:
 
 Operadores poderão visualizar **apenas inscrições da própria unidade**.
 
+---
+![](./assets/Diagramas_UML/sequencia/RF11..png)
 ---
 
 ## RF-12 — Reemissão de Comprovante
@@ -342,6 +363,8 @@ O sistema deve gerar relatórios contendo:
 
 Relatórios devem poder ser exportados em **CSV**.
 
+---
+![](./assets/Diagramas_UML/sequencia/RF13.png)
 ---
 
 # 4. Requisitos Não Funcionais
@@ -453,3 +476,326 @@ O sistema utilizará:
 * banco de dados PostgreSQL
 * geração de documentos PDF
 * exportação de relatórios em CSV
+
+---
+
+# 9. Modelo de Casos de Uso
+
+## 9.1 Atores do Sistema
+
+### Administrador
+
+Responsável pela configuração e supervisão do sistema.
+
+Funções principais:
+
+* cadastrar unidades escolares
+* cadastrar diretores
+* cadastrar secretários
+* consultar todas as inscrições
+* gerar relatórios administrativos
+
+---
+
+### Diretor
+
+Responsável pela gestão da unidade escolar.
+
+Funções principais:
+
+* registrar inscrições
+* consultar inscrições da unidade
+
+---
+
+### Secretário
+
+Responsável pelo atendimento ao público e registro de inscrições.
+
+Funções principais:
+
+* registrar inscrições
+* consultar inscrições da unidade
+* reemitir comprovantes
+
+---
+
+# 9.2 Diagrama de Casos de Uso (Descrição)
+
+Representação conceitual:
+
+```
+Administrador
+   │
+   ├── Gerenciar unidades escolares
+   ├── Gerenciar usuários
+   ├── Consultar inscrições
+   └── Gerar relatórios
+
+Diretor
+   │
+   ├── Registrar inscrição
+   ├── Consultar inscrições da unidade
+   └── Reemitir comprovante
+
+Secretário
+   │
+   ├── Registrar inscrição
+   ├── Consultar inscrições da unidade
+   └── Reemitir comprovante
+```
+ 
+
+![](../docs/assets/Diagramas_UML/use_case/use_case.png)
+---
+
+# 10. Descrição de Casos de Uso
+
+## UC-01 — Autenticar Usuário
+
+### Atores
+
+Administrador, Diretor, Secretário
+
+### Descrição
+
+Permite que usuários autorizados acessem o sistema.
+
+### Fluxo Principal
+
+1. usuário acessa a tela de login
+2. informa email e senha
+3. sistema valida credenciais
+4. sistema identifica perfil
+5. sistema redireciona para o painel
+
+### Fluxos Alternativos
+
+**Credenciais inválidas**
+
+* sistema exibe mensagem de erro
+* usuário permanece na tela de login
+
+---
+
+## UC-02 — Registrar Inscrição
+
+### Atores
+
+Diretor, Secretário
+
+### Descrição
+
+Permite registrar uma nova inscrição de criança para vaga em creche.
+
+### Fluxo Principal
+
+1. usuário inicia nova inscrição
+2. sistema solicita CPF da criança
+3. sistema verifica duplicidade
+4. usuário registra dados do responsável
+5. usuário registra dados da criança
+6. sistema apresenta resumo da inscrição
+7. usuário confirma os dados
+8. sistema grava inscrição
+9. sistema gera comprovante
+
+---
+
+## UC-03 — Cadastrar Criança
+
+### Atores
+
+Diretor, Secretário
+
+### Descrição
+
+Permite registrar dados da criança no sistema.
+
+### Fluxo Principal
+
+1. usuário preenche formulário
+2. sistema valida dados
+3. sistema salva cadastro
+
+### Fluxo Alternativo
+
+**Cadastro de irmãos**
+
+Após salvar:
+
+* sistema pergunta se deseja cadastrar outra criança
+* sistema reaproveita dados comuns
+* campos permanecem editáveis
+
+---
+
+## UC-04 — Consultar Inscrições
+
+### Atores
+
+Administrador, Diretor, Secretário
+
+### Descrição
+
+Permite consultar inscrições registradas no sistema.
+
+### Fluxo Principal
+
+1. usuário acessa tela de consulta
+2. usuário informa filtro de pesquisa
+3. sistema exibe resultados
+4. usuário seleciona inscrição
+5. sistema exibe detalhes
+
+---
+
+## UC-05 — Gerar Relatórios
+
+### Atores
+
+Administrador
+
+### Descrição
+
+Permite gerar relatórios administrativos.
+
+### Tipos de relatório
+
+* lista geral de inscritos
+* inscritos por unidade
+* inscritos por faixa etária
+* inscritos por critérios sociais
+
+---
+
+# 11. Modelo de Dados Conceitual (ER)
+
+Entidades principais:
+
+```
+UNIDADE_ESCOLAR
+    │
+    ├── USUARIO
+    │
+    └── INSCRICAO
+            │
+            ├── CRIANCA
+            │
+            └── RESPONSAVEL
+```
+
+---
+
+# 12. Dicionário de Dados
+
+## Tabela: unidades_escolares
+
+| Campo    | Tipo    | Descrição                |
+| -------- | ------- | ------------------------ |
+| id       | inteiro | identificador da unidade |
+| nome     | texto   | nome da unidade          |
+| endereco | texto   | endereço da unidade      |
+
+---
+
+## Tabela: usuarios
+
+| Campo      | Tipo    | Descrição                |
+| ---------- | ------- | ------------------------ |
+| id         | inteiro | identificador do usuário |
+| nome       | texto   | nome do usuário          |
+| email      | texto   | email de acesso          |
+| perfil     | texto   | tipo de usuário          |
+| unidade_id | inteiro | unidade vinculada        |
+
+---
+
+## Tabela: responsaveis
+
+| Campo    | Tipo    | Descrição           |
+| -------- | ------- | ------------------- |
+| id       | inteiro | identificador       |
+| nome     | texto   | nome do responsável |
+| cpf      | texto   | CPF                 |
+| telefone | texto   | telefone            |
+| endereco | texto   | endereço            |
+
+---
+
+## Tabela: criancas
+
+| Campo           | Tipo    | Descrição          |
+| --------------- | ------- | ------------------ |
+| id              | inteiro | identificador      |
+| nome            | texto   | nome da criança    |
+| data_nascimento | data    | data de nascimento |
+| cpf             | texto   | CPF                |
+| nome_pai        | texto   | nome do pai        |
+| nome_mae        | texto   | nome da mãe        |
+
+---
+
+## Tabela: inscricoes
+
+| Campo            | Tipo    | Descrição        |
+| ---------------- | ------- | ---------------- |
+| id               | inteiro | identificador    |
+| numero_inscricao | texto   | número único     |
+| crianca_id       | inteiro | criança          |
+| responsavel_id   | inteiro | responsável      |
+| unidade_id       | inteiro | unidade escolar  |
+| data_inscricao   | data    | data de registro |
+
+---
+
+# 13. Matriz de Rastreabilidade de Requisitos
+
+| Requisito | Caso de Uso |
+| --------- | ----------- |
+| RF-01     | UC-01       |
+| RF-04     | UC-02       |
+| RF-05     | UC-02       |
+| RF-06     | UC-03       |
+| RF-11     | UC-04       |
+| RF-13     | UC-05       |
+
+---
+
+# 14. Critérios de Qualidade dos Requisitos
+
+Os requisitos definidos neste documento seguem os critérios recomendados por **Karl Wiegers**:
+
+* corretos
+* completos
+* consistentes
+* verificáveis
+* rastreáveis
+* modificáveis
+
+---
+
+# 15. Plano Inicial de Validação
+
+A validação do sistema deverá incluir:
+
+* testes de autenticação
+* testes de cadastro
+* testes de prevenção de duplicidade
+* testes de geração de comprovante
+* testes de relatórios
+
+---
+
+# Conclusão
+
+Esta SRS estabelece as bases para o desenvolvimento do **Sistema de Inscrição em Creche**, descrevendo de forma estruturada:
+
+* requisitos funcionais
+* requisitos não funcionais
+* modelo de dados
+* casos de uso
+* regras de negócio
+
+O documento fornece uma **base formal para implementação, testes e manutenção do sistema**.
+
