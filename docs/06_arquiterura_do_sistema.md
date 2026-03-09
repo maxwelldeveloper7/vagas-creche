@@ -52,59 +52,73 @@ Camada de Persistência
 Uma organização simples e adequada para Flask.
 
 ```
-sistema-creche/
-
-app/
+vagas-creche/
 │
-├── __init__.py
-├── config.py
-├── extensions.py
-│
-├── models/
-│   ├── usuario.py
-│   ├── unidade_escolar.py
-│   ├── responsavel.py
-│   ├── crianca.py
-│   └── inscricao.py
-│
-├── routes/
-│   ├── auth_routes.py
-│   ├── inscricao_routes.py
-│   ├── consulta_routes.py
-│   └── relatorio_routes.py
-│
-├── services/
-│   ├── inscricao_service.py
-│   ├── pdf_service.py
-│   └── relatorio_service.py
-│
-├── templates/
-│   ├── base.html
-│   ├── login.html
-│   ├── dashboard.html
-│   ├── inscricao/
-│   │   ├── iniciar.html
-│   │   ├── responsavel.html
-│   │   ├── crianca.html
-│   │   └── conferencia.html
+├── app/
+│   ├── __init__.py
+│   ├── config.py
 │   │
-│   └── consulta/
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── usuario.py
+│   │   ├── unidade.py
+│   │   ├── responsavel.py
+│   │   ├── crianca.py
+│   │   └── inscricao.py
+│   │
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth_routes.py
+│   │   ├── inscricao_routes.py
+│   │   ├── consulta_routes.py
+│   │   └── relatorio_routes.py
+│   │
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   ├── inscricao_service.py
+│   │   └── relatorio_service.py
+│   │
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── dashboard.html
+│   │   │
+│   │   ├── inscricoes/
+│   │   │   ├── nova_inscricao.html
+│   │   │   ├── cadastro_responsavel.html
+│   │   │   ├── cadastro_crianca.html
+│   │   │   ├── conferencia.html
+│   │   │   └── comprovante.html
+│   │   │
+│   │   ├── consultas/
+│   │   │   └── consulta_inscricoes.html
+│   │   │
+│   │   └── relatorios/
+│   │       └── relatorios.html
+│   │
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   │
+│   │   ├── js/
+│   │   │   └── main.js
+│   │   │
+│   │   └── img/
+│   │
+│   ├── utils/
+│   │   ├── pdf_generator.py
+│   │   ├── security.py
+│   │   └── validators.py
+│   │
+│   └── database.py
 │
-├── static/
-│   ├── css/
-│   ├── js/
-│   └── img/
+├── migrations/
 │
-└── utils/
-    ├── auth.py
-    ├── validators.py
-    └── helpers.py
-
-
-migrations/
-
-run.py
-requirements.txt
+├── run.py
+│
+├── requirements.txt
+│
+└── README.md
 ```
 
 ---

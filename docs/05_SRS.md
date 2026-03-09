@@ -247,6 +247,7 @@ Dados obrigatórios:
 * parentesco
 
 Dados socioeconômicos opcionais também poderão ser registrados.
+
 ---
 ![](./assets/Diagramas_UML/sequencia/RF05.png)
 ---
