@@ -150,6 +150,7 @@ Exemplo de turmas:
 * Berçário II
 * Berçário III
 * 1º Período
+* 2º Período
 
 ### Campos da Turma
 
