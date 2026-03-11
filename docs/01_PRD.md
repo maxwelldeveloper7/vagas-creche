@@ -46,16 +46,14 @@ O sistema proposto visa **centralizar, padronizar e registrar digitalmente o pro
 
 ## 3.1 Administrador
 
-Responsável pela **configuração institucional e supervisão administrativa do sistema**.
+Responsável pela **configuração institucional(Unidade, Diretor, Secretário) e supervisão administrativa do sistema**.
 
 ### Permissões
 
 - cadastrar unidades escolares
 - cadastrar diretores
 - cadastrar secretários
-- cadastrar e configurar turmas
 - definir períodos de inscrição
-- editar cadastros institucionais
 - consultar todas as inscrições
 - gerar relatórios administrativos
 
@@ -71,6 +69,8 @@ Responsável pelo **atendimento direto ao cidadão e registro das inscrições**
 
 ### Permissões
 
+- cadastrar e configurar turmas
+- editar cadastros institucionais
 - registrar inscrições
 - cadastrar responsável
 - cadastrar criança
@@ -129,11 +129,14 @@ O sistema deve:
 
 ## 5.2 Gerenciamento da Estrutura Escolar
 
-Apenas administradores podem cadastrar e gerenciar:
+Administradores podem cadastrar e gerenciar:
 
 - unidades escolares
 - diretores
 - secretários
+
+Operadores podem cadastrar e gerenciar:
+
 - turmas da educação infantil
 
 ### Cadastro de Turmas
