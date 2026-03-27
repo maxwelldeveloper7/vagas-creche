@@ -185,6 +185,10 @@ O fluxo operacional principal é organizado priorizando simplicidade e clareza p
 
 ## 5. Funcionalidades do Sistema
 
+Aqui está a seção 5.1 revisada:
+
+---
+
 ### 5.1 Autenticação
 
 O sistema permite login apenas de usuários previamente cadastrados e autorizados.
@@ -198,13 +202,32 @@ O sistema permite login apenas de usuários previamente cadastrados e autorizado
 - identificar perfil do usuário autenticado
 - aplicar controle de acesso conforme o perfil
 - redirecionar ao painel correspondente ao perfil
-- registrar tentativas de login (com sucesso e falha) no log de auditoria
+- registrar tentativas de login (com sucesso e falha) no log de auditoria, incluindo IP de origem, identificador do dispositivo e timestamp
 - bloquear conta após número configurável de tentativas inválidas consecutivas
 
 **Recuperação de acesso:**
-- o Diretor ou Secretário Escolar com acesso bloqueado ou senha esquecida deve acionar o Secretário de Educação vinculado à sua unidade para redefinição de credenciais
-- o Secretário de Educação aciona o Administrador
-- o processo de redefinição é registrado no log de auditoria
+
+O fluxo de redefinição de senha é autônomo e iniciado pelo próprio usuário, sem dependência de intervenção manual de superiores hierárquicos.
+
+- o usuário solicita a redefinição informando seu CPF ou e-mail institucional cadastrado
+- o sistema envia um link de redefinição para o e-mail institucional vinculado ao cadastro do usuário
+- o link tem validade de 1 hora — após uso ou expiração, é automaticamente invalidado
+- após redefinição bem-sucedida, sessões ativas anteriores são encerradas
+- o evento completo de redefinição é registrado no log de auditoria com usuário, IP de origem, identificador do dispositivo e timestamp
+
+**Restrições do e-mail institucional:**
+- o e-mail institucional é cadastrado pelo nível superior hierárquico no momento da criação do usuário
+- o usuário não pode alterar o próprio e-mail de recuperação sem autorização do nível superior
+- alterações no e-mail institucional são registradas no log de auditoria
+
+**Rastreabilidade e responsabilização:**
+
+Todas as ações realizadas no sistema são registradas no log de auditoria com identificação do usuário autenticado, perfil, operação realizada, IP de origem, identificador do dispositivo e timestamp. Esse registro é imutável e serve de base para apuração administrativa ou jurídica em caso de uso indevido do sistema.
+
+**Hierarquia de suporte para casos excepcionais:**
+- Diretor ou Secretário Escolar sem acesso ao e-mail institucional cadastrado: aciona o Secretário de Educação para atualização do e-mail e reenvio do link
+- Secretário de Educação: aciona o Administrador
+- todos os atendimentos excepcionais são registrados no log de auditoria
 
 ---
 
