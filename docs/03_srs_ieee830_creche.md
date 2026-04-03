@@ -397,7 +397,7 @@ Após o cadastro do responsável, o sistema apresenta o formulário de cadastro 
 
 **Campos de solicitação de vaga:**
 - unidade escolar pretendida (qualquer unidade ativa da rede — escolha livre do responsável)
-- turma pretendida (sugerida automaticamente; seleção incompatível é bloqueada)
+- turma pretendida (sugerida automaticamente; seleção incompatível é bloqueada, pois as opções deste campo serão filtradas e haverá uma lista apenas com turmas compatíveis de acordo com o corte etário)
 
 **Campos de situação documental (opcionais):**
 - certidão em que não conste pai ou mãe
