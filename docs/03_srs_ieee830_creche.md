@@ -397,7 +397,7 @@ Após o cadastro do responsável, o sistema apresenta o formulário de cadastro 
 
 **Campos de solicitação de vaga:**
 - unidade escolar pretendida (qualquer unidade ativa da rede — escolha livre do responsável)
-- turma pretendida (sugerida automaticamente; seleção incompatível é bloqueada, pois as opções deste campo serão filtradas e haverá uma lista apenas com turmas compatíveis de acordo com o corte etário)
+- turma pretendida (lista filtrada automaticamente pelo sistema com base no corte etário — somente turmas compatíveis com a idade da criança são exibidas como opção)
 
 **Campos de situação documental (opcionais):**
 - certidão em que não conste pai ou mãe
@@ -418,8 +418,9 @@ Após o cadastro do responsável, o sistema apresenta o formulário de cadastro 
 
 **Regras:**
 - a idade da criança é calculada com base na data de corte **31 de março** do ano letivo vigente
-- o sistema calcula automaticamente a faixa etária elegível e sugere a turma compatível
-- seleção de turma incompatível com a idade calculada é impossibilitada, pois o campo só reenderizará lista permitida pelo corte etário. Caso a idade da criança seja imconpativel o sistema emite uma mesagem 'Idade inválida'
+- o sistema calcula automaticamente a faixa etária elegível com base na data de nascimento informada
+- o campo de turma pretendida exibe **apenas as turmas compatíveis** com a faixa etária calculada — turmas incompatíveis não aparecem como opção
+- caso a idade calculada não corresponda a nenhuma turma disponível na rede, o sistema exibe a mensagem **"Idade inválida"** e bloqueia o prosseguimento da inscrição
 - o parentesco entre responsável e criança é registrado em `responsaveis_criancas`
 
 ---
