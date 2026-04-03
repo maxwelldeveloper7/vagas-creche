@@ -790,8 +790,3 @@ O sistema coleta dados socioeconômicos e de saúde de forma neutra, sem aplicar
 | `DEFAULT NOW()` em `criado_em` e `ocorrido_em` | Timestamp gerado pelo banco, não pela aplicação — evita manipulação. |
 | Critérios de priorização fora do escopo | Evita risco jurídico. A Secretaria Municipal define critérios externamente ao sistema. |
 | Sistema exclusivamente online | Garante visibilidade em tempo real pela Secretaria. |
-
----
-
-*Documento gerado a partir do PRD v2.0, modelagem de dados DBML v3 e DDL PostgreSQL v1.0.*  
-*Próximos artefatos previstos: Arc42 (arquitetura), Manual de Implantação, documento de infraestrutura e SLA.*
