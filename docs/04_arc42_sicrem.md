@@ -101,8 +101,8 @@ Os objetivos de qualidade que guiam as decisões arquiteturais deste documento, 
 
 ```
                          ┌─────────────────────────────┐
-                         │           SICREM             │
-  Operadores ────────────►  (Diretores / Sec. Escolares) │
+                         │           SICREM            │
+  Operadores ────────────► (Diretores / Sec. Escolares)│
   (14 unidades)          │                             │
                          │  Registro de inscrições     │
   Secretaria Mun. ───────►  Relatórios globais         │
@@ -112,7 +112,7 @@ Os objetivos de qualidade que guiam as decisões arquiteturais deste documento, 
                          └──────────┬──────────────────┘
                                     │
                          ┌──────────▼──────────────────┐
-                         │       PostgreSQL             │
+                         │       PostgreSQL            │
                          │  (dados + audit_log)        │
                          └─────────────────────────────┘
 ```
@@ -121,11 +121,11 @@ Os objetivos de qualidade que guiam as decisões arquiteturais deste documento, 
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        Infraestrutura                        │
+│                        Infraestrutura                       │
 │                                                             │
 │  Navegador ──HTTPS──► Nginx (proxy reverso + TLS)           │
 │                              │                              │
-│                       Gunicorn (WSGI)                        │
+│                       Gunicorn (WSGI)                       │
 │                              │                              │
 │                        Flask App                            │
 │                              │                              │
@@ -133,7 +133,7 @@ Os objetivos de qualidade que guiam as decisões arquiteturais deste documento, 
 │                              │                              │
 │                        PostgreSQL 14                        │
 │                              │                              │
-│                    Servidor SMTP (e-mail)                    │
+│                    Servidor SMTP (e-mail)                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
