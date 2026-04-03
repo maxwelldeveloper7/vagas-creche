@@ -419,7 +419,7 @@ Após o cadastro do responsável, o sistema apresenta o formulário de cadastro 
 **Regras:**
 - a idade da criança é calculada com base na data de corte **31 de março** do ano letivo vigente
 - o sistema calcula automaticamente a faixa etária elegível e sugere a turma compatível
-- seleção de turma incompatível com a idade calculada é bloqueada, com exibição de mensagem explicativa
+- seleção de turma incompatível com a idade calculada é impossibilitada, pois o campo só reenderizará lista permitida pelo corte etário. Caso a idade da criança seja imconpativel o sistema emite uma mesagem 'Idade inválida'
 - o parentesco entre responsável e criança é registrado em `responsaveis_criancas`
 
 ---
